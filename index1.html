@@ -1,0 +1,1976 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Surprise For You ♡</title>
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =========================================
+         CSS STYLING
+    ========================================== -->
+
+    <style>
+
+        /* =====================================
+           01. COLOURS AND FONTS
+        ====================================== */
+
+        :root {
+
+            --background: #F5B5BE;
+            --primary: #D65C72;
+            --primary-dark: #B8435A;
+            --white: #FFF8F4;
+            --text: #24191C;
+
+            --font-main: "DM Sans", Arial, sans-serif;
+            --font-script: "Dancing Script", cursive;
+
+        }
+
+
+        /* =====================================
+           02. GLOBAL SETTINGS
+        ====================================== */
+
+        * {
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+
+            background: var(--background);
+            color: var(--text);
+
+            font-family: var(--font-main);
+
+            min-height: 100vh;
+            min-height: 100svh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* =====================================
+           03. SCALLOPED BORDERS
+        ====================================== */
+
+        body::before,
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            left: 0;
+            right: 0;
+
+            height: 15px;
+
+            background: radial-gradient(
+                ellipse at 15px 0,
+                var(--white) 68%,
+                transparent 72%
+            ) 0 0 / 30px 15px repeat-x;
+
+            z-index: 10;
+
+            pointer-events: none;
+
+        }
+
+        body::before {
+
+            top: 0;
+
+        }
+
+        body::after {
+
+            bottom: 0;
+
+            transform: rotate(180deg);
+
+        }
+
+
+        /* =====================================
+           04. MAIN CONTAINER
+        ====================================== */
+
+        main {
+
+            width: min(900px, 88vw);
+
+            padding: 70px 0;
+
+            text-align: center;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+        .scene {
+
+            animation: reveal 0.65s ease both;
+
+        }
+
+
+        /* =====================================
+           05. TYPOGRAPHY
+        ====================================== */
+
+        h1 {
+
+            font-size: clamp(24px, 4vw, 40px);
+
+            font-weight: 600;
+
+            line-height: 1.25;
+
+            margin-bottom: 25px;
+
+            text-transform: uppercase;
+
+        }
+
+        h2 {
+
+            font-family: var(--font-script);
+
+            font-size: clamp(40px, 7vw, 75px);
+
+            color: #A33C51;
+
+            margin-bottom: 15px;
+
+        }
+
+        p {
+
+            font-size: clamp(15px, 2vw, 19px);
+
+            line-height: 1.65;
+
+            margin-bottom: 15px;
+
+        }
+
+        .subtitle {
+
+            color: #A34D60;
+
+            font-size: 14px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* =====================================
+           06. BUTTONS
+        ====================================== */
+
+        button {
+
+            background: var(--primary);
+
+            color: white;
+
+            border: none;
+
+            border-radius: 100px;
+
+            font-family: var(--font-main);
+
+            font-size: 17px;
+
+            font-weight: 500;
+
+            min-width: 150px;
+
+            padding: 13px 28px;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+
+        }
+
+        button:hover {
+
+            background: var(--primary-dark);
+
+            transform: translateY(-3px);
+
+            box-shadow: 0 5px 15px #B8435A30;
+
+        }
+
+        button:active {
+
+            transform: scale(0.95);
+
+        }
+
+        button:focus-visible {
+
+            outline: 3px solid white;
+
+            outline-offset: 4px;
+
+        }
+
+        .buttons {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            max-width: 500px;
+
+            margin: 20px auto;
+
+        }
+
+        .break {
+
+            flex-basis: 100%;
+
+            height: 0;
+
+        }
+
+
+        /* =====================================
+           07. HANGING HEARTS
+        ====================================== */
+
+        .hanging-hearts {
+
+            position: fixed;
+
+            top: 0;
+
+            right: 30px;
+
+            display: flex;
+
+            gap: 15px;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+        }
+
+        .hanging-hearts span {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            font-size: 35px;
+
+            color: var(--primary);
+
+            transform-origin: top center;
+
+            animation: swing 4s ease-in-out infinite;
+
+        }
+
+        .hanging-hearts span::before {
+
+            content: "";
+
+            width: 1px;
+
+            height: var(--length);
+
+            background: var(--primary);
+
+        }
+
+        .hanging-hearts span:nth-child(2) {
+
+            animation-delay: 0.7s;
+
+        }
+
+        .hanging-hearts span:nth-child(3) {
+
+            animation-delay: 1.4s;
+
+        }
+
+
+        /* =====================================
+           08. BOTTOM CORNER HEARTS
+        ====================================== */
+
+        .corner-hearts {
+
+            position: fixed;
+
+            bottom: 25px;
+
+            left: 15px;
+
+            width: 180px;
+
+            height: 230px;
+
+            pointer-events: none;
+
+            color: var(--primary);
+
+            z-index: 0;
+
+        }
+
+        .corner-hearts span {
+
+            position: absolute;
+
+            line-height: 1;
+
+        }
+
+        .corner-hearts span:nth-child(1) {
+
+            font-size: 120px;
+
+            bottom: 20px;
+
+            left: 0;
+
+            transform: rotate(-30deg);
+
+        }
+
+        .corner-hearts span:nth-child(2) {
+
+            font-size: 40px;
+
+            bottom: 0;
+
+            left: 110px;
+
+            transform: rotate(-15deg);
+
+        }
+
+        .corner-hearts span:nth-child(3) {
+
+            font-size: 45px;
+
+            top: 10px;
+
+            left: 25px;
+
+            transform: rotate(-25deg);
+
+        }
+
+        .corner-hearts span:nth-child(4) {
+
+            font-size: 24px;
+
+            top: 80px;
+
+            left: 5px;
+
+        }
+
+        .corner-hearts span:nth-child(5) {
+
+            font-size: 20px;
+
+            bottom: 0;
+
+            left: 35px;
+
+        }
+
+
+        /* =====================================
+           09. ANIMATED STICKERS
+        ====================================== */
+
+        .sticker {
+
+            display: block;
+
+            width: clamp(110px, 19vw, 180px);
+
+            height: auto;
+
+            aspect-ratio: 1;
+
+            object-fit: cover;
+
+            border: 5px solid white;
+
+            border-radius: 25px;
+
+            box-shadow: 0 6px 20px #9B394B25;
+
+            margin: 20px auto 25px;
+
+            animation: floating 3s ease-in-out infinite;
+
+        }
+
+        .cat {
+
+            object-fit: contain;
+
+            background: white;
+
+        }
+
+        .gift {
+
+            font-size: 100px;
+
+            margin: 20px auto 30px;
+
+            display: block;
+
+            animation: floating 2.5s ease-in-out infinite;
+
+        }
+
+
+        /* =====================================
+           10. SIDE-BY-SIDE LAYOUT
+        ====================================== */
+
+        .split {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 35px;
+
+            margin: 30px auto;
+
+        }
+
+        .copy {
+
+            max-width: 350px;
+
+        }
+
+
+        /* =====================================
+           11. FIRST CONVERSATION
+        ====================================== */
+
+        .chat {
+
+            background: #FFF9F5;
+
+            width: 280px;
+
+            max-width: 100%;
+
+            padding: 25px;
+
+            border-radius: 8px;
+
+            box-shadow: 4px 8px 20px #793C4925;
+
+            transform: rotate(-5deg);
+
+            text-align: left;
+
+        }
+
+        img.chat {
+
+            object-fit: contain;
+
+            padding: 8px;
+
+        }
+
+        .chat small {
+
+            display: block;
+
+            font-size: 12px;
+
+            color: #A37680;
+
+            text-align: center;
+
+            margin: 12px 0;
+
+        }
+
+        .bubble {
+
+            font-size: 14px;
+
+            background: #F0E9E7;
+
+            padding: 10px 15px;
+
+            border-radius: 14px;
+
+            margin: 12px 0;
+
+            width: fit-content;
+
+        }
+
+        .bubble.right {
+
+            background: #D9EAFF;
+
+            margin-left: auto;
+
+        }
+
+
+        /* =====================================
+           12. PHOTOGRAPHS
+        ====================================== */
+
+        .photo {
+
+            width: min(430px, 90%);
+
+            max-height: 350px;
+
+            object-fit: contain;
+
+            border: 6px solid white;
+
+            border-radius: 15px;
+
+            background: #FCE0E4;
+
+            box-shadow: 0 8px 25px #793C4925;
+
+            display: block;
+
+            margin: 25px auto;
+
+        }
+
+        .placeholder {
+
+            min-height: 220px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 25px;
+
+            color: #955364;
+
+        }
+
+        .placeholder span {
+
+            font-size: 65px;
+
+        }
+
+
+        /* =====================================
+           13. FINAL LOVE LETTER
+        ====================================== */
+
+        .letter {
+
+            background: #FFFCF7;
+
+            width: 370px;
+
+            max-width: 100%;
+
+            padding: 30px;
+
+            box-shadow: 4px 8px 25px #793C4930;
+
+            text-align: left;
+
+            transform: rotate(-4deg);
+
+            position: relative;
+
+        }
+
+        .letter::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: -9px;
+
+            left: 35%;
+
+            width: 100px;
+
+            height: 23px;
+
+            background: #E3AF8A70;
+
+            transform: rotate(-4deg);
+
+        }
+
+        .letter h3 {
+
+            font-family: var(--font-script);
+
+            font-size: 30px;
+
+            color: #B8435A;
+
+            margin-bottom: 15px;
+
+        }
+
+        .letter p {
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+            margin-bottom: 12px;
+
+        }
+
+        .signature {
+
+            font-family: var(--font-script);
+
+            font-size: 26px !important;
+
+            color: #B8435A;
+
+            margin-top: 20px;
+
+        }
+
+
+        /* =====================================
+           14. HEART-SHAPED PHOTO COLLAGE
+        ====================================== */
+
+        .heart-collage {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            grid-template-rows: repeat(2, 1fr);
+
+            gap: 5px;
+
+            width: 320px;
+
+            max-width: 100%;
+
+            aspect-ratio: 1;
+
+            overflow: hidden;
+
+            background: #FFF8F4;
+
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 95C35 82 0 59 0 28C0 1 33 -2 50 20C67 -2 100 1 100 28C100 59 65 82 50 95Z'/%3E%3C/svg%3E");
+
+            mask-size: 100% 100%;
+
+            mask-repeat: no-repeat;
+
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 95C35 82 0 59 0 28C0 1 33 -2 50 20C67 -2 100 1 100 28C100 59 65 82 50 95Z'/%3E%3C/svg%3E");
+
+            -webkit-mask-size: 100% 100%;
+
+            -webkit-mask-repeat: no-repeat;
+
+        }
+
+        .heart-collage img {
+
+            width: 100%;
+
+            height: 100%;
+
+            min-height: 0;
+
+            object-fit: cover;
+
+        }
+
+
+        /* =====================================
+           15. NAVIGATION AND PROGRESS
+        ====================================== */
+
+        .navigation {
+
+            position: fixed;
+
+            bottom: 25px;
+
+            right: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            z-index: 12;
+
+        }
+
+        .navigation button {
+
+            min-width: auto;
+
+            padding: 7px 15px;
+
+            background: transparent;
+
+            color: #994654;
+
+            font-size: 13px;
+
+            border: 1px solid #D88896;
+
+        }
+
+        .navigation span {
+
+            color: #994654;
+
+            font-size: 12px;
+
+        }
+
+        .progress {
+
+            position: fixed;
+
+            top: 15px;
+
+            left: 0;
+
+            right: 0;
+
+            height: 3px;
+
+            z-index: 11;
+
+            background: #FFFFFF25;
+
+        }
+
+        .progress-bar {
+
+            height: 100%;
+
+            width: 0;
+
+            background: var(--primary);
+
+            transition: width 0.5s ease;
+
+        }
+
+
+        /* =====================================
+           16. INTERACTIVE MESSAGES
+        ====================================== */
+
+        .toast {
+
+            min-height: 25px;
+
+            margin-top: 15px;
+
+            color: #A33349;
+
+            font-size: 15px;
+
+        }
+
+        .wait {
+
+            font-family: var(--font-script);
+
+            font-size: 60px;
+
+            color: var(--primary-dark);
+
+            text-transform: none;
+
+        }
+
+        .final-title {
+
+            font-family: var(--font-script);
+
+            font-size: clamp(45px, 8vw, 80px);
+
+            color: #B8435A;
+
+        }
+
+
+        /* =====================================
+           17. CONFETTI
+        ====================================== */
+
+        .particle {
+
+            position: fixed;
+
+            top: -40px;
+
+            pointer-events: none;
+
+            z-index: 20;
+
+            animation: falling 3.5s linear forwards;
+
+        }
+
+
+        /* =====================================
+           18. ANIMATIONS
+        ====================================== */
+
+        @keyframes reveal {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(15px) scale(0.98);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0) scale(1);
+
+            }
+
+        }
+
+        @keyframes floating {
+
+            0%, 100% {
+
+                transform: translateY(0);
+
+            }
+
+            50% {
+
+                transform: translateY(-10px) rotate(2deg);
+
+            }
+
+        }
+
+        @keyframes swing {
+
+            0%, 100% {
+
+                transform: rotate(-5deg);
+
+            }
+
+            50% {
+
+                transform: rotate(5deg);
+
+            }
+
+        }
+
+        @keyframes falling {
+
+            to {
+
+                transform:
+                    translate(var(--drift), 115vh)
+                    rotate(360deg);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+        /* =====================================
+           19. MOBILE RESPONSIVE DESIGN
+        ====================================== */
+
+        @media (max-width: 600px) {
+
+            main {
+
+                width: 88vw;
+
+                padding: 85px 0;
+
+            }
+
+            h1 {
+
+                font-size: 25px;
+
+            }
+
+            h2 {
+
+                font-size: 48px;
+
+            }
+
+            .split {
+
+                flex-direction: column;
+
+                gap: 25px;
+
+            }
+
+            .corner-hearts {
+
+                transform: scale(0.5);
+
+                transform-origin: bottom left;
+
+                opacity: 0.65;
+
+            }
+
+            .hanging-hearts {
+
+                transform: scale(0.7);
+
+                transform-origin: top right;
+
+                right: 10px;
+
+            }
+
+            .sticker {
+
+                width: 140px;
+
+            }
+
+            button {
+
+                min-width: 125px;
+
+                font-size: 15px;
+
+                padding: 12px 22px;
+
+            }
+
+            .letter {
+
+                padding: 23px;
+
+                transform: rotate(-2deg);
+
+            }
+
+            .heart-collage {
+
+                width: 220px;
+
+            }
+
+            .navigation {
+
+                right: 15px;
+
+                bottom: 22px;
+
+            }
+
+            .gift {
+
+                font-size: 85px;
+
+            }
+
+            .wait {
+
+                font-size: 50px;
+
+            }
+
+        }
+
+
+        /* =====================================
+           20. REDUCED MOTION ACCESSIBILITY
+        ====================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                animation: none !important;
+
+                transition: none !important;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<!-- =========================================
+     HTML WEBSITE STRUCTURE
+========================================== -->
+
+<body>
+
+
+    <!-- TOP PROGRESS BAR -->
+
+    <div class="progress" aria-hidden="true">
+
+        <div class="progress-bar" id="progressBar"></div>
+
+    </div>
+
+
+    <!-- HANGING HEARTS -->
+
+    <div class="hanging-hearts" aria-hidden="true">
+
+        <span style="--length: 65px">♥</span>
+
+        <span style="--length: 35px">♥</span>
+
+        <span style="--length: 100px">♥</span>
+
+    </div>
+
+
+    <!-- BOTTOM LEFT HEARTS -->
+
+    <div class="corner-hearts" aria-hidden="true">
+
+        <span>♥</span>
+        <span>♥</span>
+        <span>♥</span>
+        <span>♥</span>
+        <span>♥</span>
+
+    </div>
+
+
+    <!-- BIRTHDAY CONTENT -->
+
+    <main id="app" aria-live="polite"></main>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="navigation">
+
+        <button id="backButton" onclick="go(step - 1)">
+
+            ← Back
+
+        </button>
+
+        <span id="pageCount"></span>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        /* =====================================
+           01. PERSONAL CONFIGURATION
+
+           CHANGE YOUR PERSONAL DETAILS HERE
+        ====================================== */
+
+        const CONFIG = {
+
+            name: "Manika",
+
+            birthday: "26 November 2026",
+
+            signature: "Forever yours",
+
+            university: "Sabaragamuwa University",
+
+            // Uploaded sticker images
+
+            catSticker: "cat.png",
+
+            kissSticker: "kiss.png",
+
+            heartSticker: "heart.png",
+
+            // Add personal photographs here
+
+            chatPhoto: "chat.png",
+
+            smilePhoto: "netha.jpg",
+
+            // add heart images
+
+            lefttop: "lefttop.jpg",
+
+            righttop: "righttop.jpg",
+
+            leftbot: "leftbot.jpg",
+
+            rightbot: "rightbot.jpg",
+
+            memories: []
+
+        };
+
+
+        /* =====================================
+           02. GLOBAL VARIABLES
+        ====================================== */
+
+        let step = 0;
+
+        const app = document.getElementById("app");
+
+        const progressBar =
+            document.getElementById("progressBar");
+
+        const backButton =
+            document.getElementById("backButton");
+
+        const pageCount =
+            document.getElementById("pageCount");
+
+
+        /* =====================================
+           03. REUSABLE COMPONENTS
+        ====================================== */
+
+        function sticker(source, alt, extraClass = "") {
+
+            return `
+
+                <img
+
+                    src="${source}"
+
+                    alt="${alt}"
+
+                    class="sticker ${extraClass}"
+
+                >
+
+            `;
+
+        }
+
+
+        function next(label = "Next ♡") {
+
+            return `
+
+                <button onclick="go(step + 1)">
+
+                    ${label}
+
+                </button>
+
+            `;
+
+        }
+
+
+        /* =====================================
+           04. BIRTHDAY REVEAL SCENES
+        ====================================== */
+
+        const scenes = [
+
+
+            /* =================================
+               CHAPTER 01
+               WELCOME
+            ================================== */
+
+            () => `
+
+                <div class="subtitle">
+
+                    A little surprise for you
+
+                </div>
+
+                <h2>
+
+                    Halo, ${CONFIG.name}!
+
+                </h2>
+
+                <h1>
+
+                    I made something special
+                    <br>
+                    just for you...
+
+                </h1>
+
+                <div class="gift" aria-hidden="true">
+
+                    🎁
+
+                </div>
+
+                ${next("Open your gift ♡")}
+
+            `,
+
+
+            /* =================================
+               CHAPTER 02
+               ARE YOU READY?
+            ================================== */
+
+            () => `
+
+                <h1>
+
+                    Are you ready for
+                    <br>
+                    a little surprise? 👀
+
+                </h1>
+
+                ${sticker(
+                    CONFIG.catSticker,
+                    "Cute cat making a heart",
+                    "cat"
+                )}
+
+                <div class="buttons">
+
+                    <button onclick="go(2)">
+
+                        Yes ❤️
+
+                    </button>
+
+                    <button onclick="go(2)">
+
+                        Of course 😍
+
+                    </button>
+
+                    <span class="break"></span>
+
+                    <button onclick="
+                        tease('Come on baby, give it a chance! 🤭')
+                    ">
+
+                        No 😂
+
+                    </button>
+
+                </div>
+
+                <div class="toast" id="toast"></div>
+
+            `,
+
+
+            /* =================================
+               CHAPTER 03
+               HOW MUCH I LOVE YOU
+            ================================== */
+
+            () => `
+
+                <h1>
+
+                    Do you know how much
+                    <br>
+                    I love you?
+
+                </h1>
+
+                ${sticker(
+                    CONFIG.kissSticker,
+                    "Sending a little kiss"
+                )}
+
+                <div class="buttons">
+
+                    <button onclick="
+                        tease('Much more than that, baby! 🥺')
+                    ">
+
+                        A little
+
+                    </button>
+
+                    <button onclick="
+                        tease('Even more than a lot! 😍')
+                    ">
+
+                        A lot
+
+                    </button>
+
+                    <span class="break"></span>
+
+                    <button onclick="go(3)">
+
+                        Infinite ∞
+
+                    </button>
+
+                </div>
+
+                <div class="toast" id="toast"></div>
+
+            `,
+
+
+            /* =================================
+               CHAPTER 04
+               FIRST CONVERSATION
+            ================================== */
+
+            () => `
+
+                <h1>
+
+                    Do you remember
+                    <br>
+                    our first chat?
+
+                </h1>
+
+                <div class="split">
+
+                    ${CONFIG.chatPhoto ? `
+
+                        <img
+
+                            class="chat"
+
+                            src="${CONFIG.chatPhoto}"
+
+                            alt="Our first conversation"
+
+                        >
+
+                    ` : `
+
+                        <div class="chat">
+
+                            <small>
+
+                                The beginning of us ♡
+
+                            </small>
+
+                            <div class="bubble">
+
+                                A little conversation...
+
+                            </div>
+
+                            <div class="bubble right">
+
+                                A beautiful beginning. ❤️
+
+                            </div>
+
+                            <small>
+
+                                And so many memories since.
+
+                            </small>
+
+                        </div>
+
+                    `}
+
+                    <div class="copy">
+
+                        <p>
+
+                            I still smile whenever
+                            I remember the beginning
+                            of us.
+
+                        </p>
+
+                        <p>
+
+                            I never knew how special
+                            you would become to me.
+
+                        </p>
+
+                        <p>
+
+                            And now, here we are. ❤️
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                ${next()}
+
+            `,
+
+
+            /* =================================
+               CHAPTER 05
+               MY FAVOURITE THING
+            ================================== */
+
+            () => `
+
+                <h1>
+
+                    You know what
+                    <br>
+                    I love the most?
+
+                </h1>
+
+                ${sticker(
+                    CONFIG.heartSticker,
+                    "Cute heart hand gesture"
+                )}
+
+                ${next("Click to know ♡")}
+
+            `,
+
+
+            /* =================================
+               CHAPTER 06
+               HER BEAUTIFUL SMILE
+            ================================== */
+
+            () => `
+
+                <h2>
+
+                    Your beautiful smile.
+
+                </h2>
+
+                ${CONFIG.smilePhoto ? `
+
+                    <img
+
+                        class="photo"
+
+                        src="${CONFIG.smilePhoto}"
+
+                        alt="Your beautiful smile"
+
+                    >
+
+                ` : `
+
+                    <div class="photo placeholder">
+
+                        <span>♡</span>
+
+                        My favourite smile
+                        in the whole world.
+
+                    </div>
+
+                `}
+
+                <p>
+
+                    It makes even my ordinary
+                    days feel special.
+
+                </p>
+
+                ${next()}
+
+            `,
+
+
+            /* =================================
+               CHAPTER 07
+               BIRTHDAY SURPRISE
+            ================================== */
+
+            () => `
+
+                <h1 class="wait">
+
+                    Wait a second...
+
+                </h1>
+
+                <h1>
+
+                    Isn't today the birthday
+                    <br>
+                    of someone very special?
+
+                </h1>
+
+                ${sticker(
+                    CONFIG.catSticker,
+                    "Excited little cat",
+                    "cat"
+                )}
+
+                ${next("Who? 👀")}
+
+            `,
+
+
+            /* =================================
+               CHAPTER 08
+               FINAL BIRTHDAY REVEAL
+            ================================== */
+
+            () => `
+
+                <div class="subtitle">
+
+                    ${CONFIG.birthday}
+
+                </div>
+
+                <h2 class="final-title">
+
+                    It's Your Birthday , Happy Birthday Manika!
+
+                </h2>
+
+                <div class="split">
+
+                    <!-- LOVE LETTER -->
+
+                    <div class="letter">
+
+                        <h3>
+
+                            To my favourite person,
+
+                        </h3>
+
+                        <p>
+
+                            Happy Birthday, Manika! ❤️
+
+                        </p>
+
+                        <p>
+
+                            You know today is a  very special day for me . cause today's my Manika's birthday ne. she is very excited all over this month .
+
+                        </p>
+
+                        <p>
+
+                            Manika you're incredicle . you're the best ever gift gave me by this universe . You're the girl most i love + prettiest + wise + kind
+                            all in one package .
+
+                        </p>
+
+                        <p>
+
+                            Manika i know there will be good days as well as bad days , whatever we need to continue our journey together .
+                            A better world will be waiting for us. Let's see that world together.
+
+                        </p>
+
+                        <p>
+
+                            May this year bring you
+                            endless happiness, success,
+                            beautiful memories and
+                            everything your heart
+                            wishes for.
+
+                        </p>
+
+                        <p>
+
+                            Thank you for being such
+                            a special part of my life.
+
+                        </p>
+
+                        <p>
+
+                            Keep smiling, my manika.
+
+                            I love you endlessly. ♡
+
+                        </p>
+
+                        <p class="signature">
+
+                            ${CONFIG.signature}
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- HEART PHOTO COLLAGE -->
+
+                    <div class="heart-collage">
+
+                        ${(
+
+                            CONFIG.memories.length === 4
+
+                            ? CONFIG.memories
+
+                            : [
+
+                                CONFIG.lefttop,
+
+                                CONFIG.righttop,
+
+                                CONFIG.leftbot,
+
+                                CONFIG.rightbot
+
+                            ]
+
+                        ).map(photo => `
+
+                            <img
+
+                                src="${photo}"
+
+                                alt="A little piece of love"
+
+                            >
+
+                        `).join("")}
+
+                    </div>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button onclick="celebrate()">
+
+                        Sending you love ♡
+
+                    </button>
+
+                    <button onclick="go(0)">
+
+                        Watch again ↻
+
+                    </button>
+
+                </div>
+
+            `
+
+        ];
+
+
+        /* =====================================
+           05. PLAYFUL BUTTON RESPONSES
+        ====================================== */
+
+        function tease(message) {
+
+            const toast =
+                document.getElementById("toast");
+
+            if (toast) {
+
+                toast.textContent = message;
+
+            }
+
+        }
+
+
+        /* =====================================
+           06. PAGE NAVIGATION
+        ====================================== */
+
+        function go(index) {
+
+            // Check whether the page exists
+
+            if (index < 0 || index >= scenes.length) {
+
+                return;
+
+            }
+
+
+            // Update the current scene
+
+            step = index;
+
+
+            // Display the selected scene
+
+            app.innerHTML = `
+
+                <section class="scene">
+
+                    ${scenes[step]()}
+
+                </section>
+
+            `;
+
+
+            // Update page number
+
+            pageCount.textContent =
+
+                `${step + 1} / ${scenes.length}`;
+
+
+            // Update progress bar
+
+            progressBar.style.width =
+
+                ((step + 1) / scenes.length) * 100 + "%";
+
+
+            // Hide back button on first page
+
+            backButton.hidden = step === 0;
+
+
+            // Scroll to top
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "instant"
+
+            });
+
+
+            // Celebrate on final page
+
+            if (step === scenes.length - 1) {
+
+                celebrate();
+
+            }
+
+        }
+
+
+        /* =====================================
+           07. HEART CONFETTI ANIMATION
+        ====================================== */
+
+        function celebrate() {
+
+            if (
+
+                window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches
+
+            ) {
+
+                return;
+
+            }
+
+
+            const symbols = [
+
+                "♥",
+
+                "♡",
+
+                "✦"
+
+            ];
+
+
+            const colors = [
+
+                "#B8435A",
+
+                "#FFF8F4",
+
+                "#E47B91",
+
+                "#D65C72"
+
+            ];
+
+
+            for (let i = 0; i < 60; i++) {
+
+                const particle =
+                    document.createElement("span");
+
+
+                particle.className = "particle";
+
+                particle.setAttribute("aria-hidden", "true");
+
+
+                particle.textContent =
+
+                    symbols[i % symbols.length];
+
+
+                particle.style.left =
+
+                    Math.random() * 100 + "vw";
+
+
+                particle.style.color =
+
+                    colors[i % colors.length];
+
+
+                particle.style.fontSize =
+
+                    12 + Math.random() * 25 + "px";
+
+
+                particle.style.animationDelay =
+
+                    Math.random() * 1.2 + "s";
+
+
+                particle.style.setProperty(
+
+                    "--drift",
+
+                    (Math.random() - 0.5) * 200 + "px"
+
+                );
+
+
+                document.body.appendChild(particle);
+
+
+                // Remove after animation finishes
+
+                setTimeout(() => {
+
+                    particle.remove();
+
+                }, 5000);
+
+            }
+
+        }
+
+
+        /* =====================================
+           08. START THE WEBSITE
+        ====================================== */
+
+        go(0);
+
+    </script>
+
+</body>
+
+</html>
